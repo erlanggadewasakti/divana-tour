@@ -3,24 +3,153 @@
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
-import { Award, Heart, Target, Users } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  Award,
+  Clock,
+  Globe,
+  Heart,
+  MapPin,
+  Shield,
+  Star,
+  Target,
+  Trophy,
+  Users,
+} from "lucide-react";
+import { useRef } from "react";
 
+// Enhanced animation variants
 const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
+  initial: { opacity: 0, y: 80 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 },
+  transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] },
+};
+
+const fadeInScale = {
+  initial: { opacity: 0, scale: 0.8 },
+  animate: { opacity: 1, scale: 1 },
+  transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] },
+};
+
+const slideInLeft = {
+  initial: { opacity: 0, x: -80 },
+  animate: { opacity: 1, x: 0 },
+  transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] },
+};
+
+const slideInRight = {
+  initial: { opacity: 0, x: 80 },
+  animate: { opacity: 1, x: 0 },
+  transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] },
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
     },
   },
 };
 
+// Parallax component
+const ParallaxSection = ({
+  children,
+  offset = 50,
+}: {
+  children: React.ReactNode;
+  offset?: number;
+}) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [offset, -offset]);
+
+  return (
+    <motion.div ref={ref} style={{ y }}>
+      {children}
+    </motion.div>
+  );
+};
+
 export default function AboutPage() {
+  // Enhanced company values
+  const values = [
+    {
+      icon: Trophy,
+      title: "Profesional",
+      description:
+        "Melayani dengan standar profesional tinggi dan komitmen penuh untuk kepuasan pelanggan.",
+      color: "from-yellow-500 to-orange-500",
+      bgColor: "bg-yellow-50",
+      textColor: "text-yellow-600",
+    },
+    {
+      icon: Heart,
+      title: "Terpercaya",
+      description:
+        "Membangun kepercayaan melalui transparansi, kejujuran, dan konsistensi dalam setiap layanan.",
+      color: "from-red-500 to-pink-500",
+      bgColor: "bg-red-50",
+      textColor: "text-red-600",
+    },
+    {
+      icon: Shield,
+      title: "Aman & Nyaman",
+      description:
+        "Menjamin keselamatan dan kenyamanan perjalanan dengan standar keamanan terbaik.",
+      color: "from-blue-500 to-cyan-500",
+      bgColor: "bg-blue-50",
+      textColor: "text-blue-600",
+    },
+    {
+      icon: Users,
+      title: "Kekeluargaan",
+      description:
+        "Menciptakan suasana hangat dan bersahabat layaknya keluarga besar dalam setiap perjalanan.",
+      color: "from-green-500 to-emerald-500",
+      bgColor: "bg-green-50",
+      textColor: "text-green-600",
+    },
+  ];
+
+  // Enhanced milestones
+  const milestones = [
+    {
+      year: "1999",
+      title: "Berdiri",
+      description:
+        "Divana Tour didirikan dengan komitmen memberikan pelayanan wisata terbaik",
+      icon: Star,
+      color: "bg-gradient-to-r from-primary to-secondary",
+    },
+    {
+      year: "2005",
+      title: "Ekspansi Layanan",
+      description: "Menambah layanan wisata religi dan kunjungan industri",
+      icon: Globe,
+      color: "bg-gradient-to-r from-blue-500 to-purple-500",
+    },
+    {
+      year: "2010",
+      title: "10.000+ Pelanggan",
+      description:
+        "Mencapai milestone 10.000 pelanggan yang telah mempercayai layanan kami",
+      icon: Users,
+      color: "bg-gradient-to-r from-green-500 to-teal-500",
+    },
+    {
+      year: "2020",
+      title: "Era Digital",
+      description:
+        "Transformasi digital dengan layanan online dan teknologi modern",
+      icon: Award,
+      color: "bg-gradient-to-r from-orange-500 to-red-500",
+    },
+  ];
+
   const teamStructure = {
     owner: {
       name: "Drs. Slamet",
@@ -50,9 +179,9 @@ export default function AboutPage() {
       },
       {
         name: "Erlangga Dewa Sakti",
-        position: "Manajer IT",
+        position: "Manajer Teknologi",
         image: "/about-us/erlangga square.jpg",
-        department: "IT",
+        department: "Teknologi",
       },
     ],
     marketingTeam: [
@@ -79,7 +208,7 @@ export default function AboutPage() {
         image: "/about-us/tasya square.jpg",
       },
       {
-        name: "Shalsabilla Wantika Amartya",
+        name: "Shalsabilla Wantika",
         position: "Tour Leader",
         image: "/about-us/shalsabila square.jpg",
       },
@@ -87,6 +216,16 @@ export default function AboutPage() {
         name: "Eva Gustiana",
         position: "Tour Leader",
         image: "/about-us/eva square.jpg",
+      },
+      {
+        name: "Andre Saputra",
+        position: "Tour Leader",
+        image: "/about-us/andre square.jpg",
+      },
+      {
+        name: "Yuli Wibowo",
+        position: "Tour Leader",
+        image: "/about-us/yuli square.png",
       },
     ],
   };
@@ -119,115 +258,278 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-background/50">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-primary/10 to-secondary/10">
-        <div className="container mx-auto px-4">
+      {/* Enhanced Hero Section */}
+      <section className="relative py-24 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/5 overflow-hidden">
+        <ParallaxSection>
+          <div className="absolute top-10 left-10 w-20 h-20 bg-primary/20 rounded-full blur-xl" />
+          <div className="absolute bottom-10 right-10 w-32 h-32 bg-secondary/20 rounded-full blur-xl" />
+          <div className="absolute top-1/2 left-1/2 w-16 h-16 bg-accent/20 rounded-full blur-xl" />
+        </ParallaxSection>
+
+        <div className="container mx-auto px-4 relative">
           <motion.div
-            className="text-center max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
+            className="text-center max-w-5xl mx-auto"
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, ease: [0.6, -0.05, 0.01, 0.99] }}
           >
-            <h1 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-              Tentang Divana Tour
+            <motion.div
+              className="inline-block mb-6"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="px-6 py-3 bg-gradient-to-r from-primary/20 to-secondary/20 backdrop-blur-sm rounded-full border border-primary/30">
+                <span className="text-primary font-semibold">
+                  ✨ Sejak 1999
+                </span>
+              </div>
+            </motion.div>
+
+            <h1 className="font-sans font-bold text-4xl md:text-6xl lg:text-7xl mb-8 leading-tight">
+              <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                Tentang
+              </span>
+              <br />
+              <span className="text-foreground">Divana Tour</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+
+            <motion.p
+              className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               Perjalanan kami dimulai sejak 1999 dengan komitmen memberikan
-              pengalaman wisata terbaik untuk setiap pelanggan
-            </p>
+              pengalaman wisata terbaik, menciptakan kenangan tak terlupakan,
+              dan membangun kepercayaan melalui pelayanan yang tulus.
+            </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* Company Journey */}
+      {/* Enhanced Company Values */}
+      <section className="py-20 bg-gradient-to-br from-muted/30 to-background">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="font-sans font-bold text-3xl md:text-4xl text-foreground mb-4">
+              🌟 Nilai-Nilai Kami
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Prinsip-prinsip yang menjadi fondasi dalam setiap layanan yang
+              kami berikan
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
+            {values.map((value, index) => (
+              <motion.div key={index} variants={fadeInScale}>
+                <Card className="h-full border-0 bg-gradient-to-br from-card to-card/50 hover:shadow-2xl transition-all duration-500 group">
+                  <CardContent className="p-8 text-center">
+                    <motion.div
+                      className={`w-20 h-20 ${value.bgColor} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500`}
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.8 }}
+                    >
+                      <value.icon className={`w-10 h-10 ${value.textColor}`} />
+                    </motion.div>
+                    <h3 className="font-sans font-bold text-xl text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+                      {value.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {value.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Enhanced Milestones Timeline */}
+      <section className="py-20 bg-gradient-to-r from-primary/5 to-secondary/5">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="font-sans font-bold text-3xl md:text-4xl text-foreground mb-4">
+              📈 Perjalanan Kami
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Momen-momen penting dalam sejarah Divana Tour
+            </p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 gap-8"
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+            >
+              {milestones.map((milestone, index) => (
+                <motion.div key={index} variants={fadeInUp}>
+                  <Card className="border-0 bg-gradient-to-br from-card to-card/50 hover:shadow-xl transition-all duration-500 group">
+                    <CardContent className="p-6">
+                      <div className="flex items-start space-x-4">
+                        <motion.div
+                          className={`w-16 h-16 ${milestone.color} rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-500`}
+                          whileHover={{ rotate: 360 }}
+                          transition={{ duration: 0.6 }}
+                        >
+                          <milestone.icon className="w-8 h-8 text-white" />
+                        </motion.div>
+                        <div className="flex-1">
+                          <div className="flex items-center space-x-2 mb-3">
+                            <span className="text-2xl font-bold text-primary">
+                              {milestone.year}
+                            </span>
+                            <div className="flex-1 h-px bg-gradient-to-r from-primary to-transparent" />
+                          </div>
+                          <h3 className="font-bold text-lg text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                            {milestone.title}
+                          </h3>
+                          <p className="text-muted-foreground text-sm leading-relaxed">
+                            {milestone.description}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced Founder & Company Journey */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              variants={slideInLeft}
+              initial="initial"
+              whileInView="animate"
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              className="relative"
             >
               <div className="relative">
-                <img
+                <motion.img
                   src={"/about-us/slamet.jpg"}
                   alt="Drs. Slamet - Founder Divana Tour"
-                  className="w-full max-w-md mx-auto rounded-2xl shadow-2xl"
+                  className="w-full max-w-md mx-auto rounded-3xl shadow-2xl"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
                 />
-                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-primary rounded-full flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-2xl">
-                    1999
-                  </span>
-                </div>
               </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              variants={slideInRight}
+              initial="initial"
+              whileInView="animate"
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="space-y-6"
+              className="space-y-8"
             >
-              <h2 className="font-serif font-bold text-3xl md:text-4xl text-foreground">
-                Perjalanan Kami
-              </h2>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  <strong className="text-foreground">DIVANA TOUR</strong>{" "}
-                  didirikan pada tahun 1999 oleh{" "}
-                  <strong className="text-foreground">Drs. Slamet</strong>{" "}
-                  dengan visi sederhana namun mendalam: memberikan pelayanan
-                  perjalanan wisata yang tidak hanya memuaskan, tetapi juga
-                  berkesan dan bermakna bagi setiap pelanggan.
-                </p>
-                <p>
-                  Filosofi utama kami adalah{" "}
-                  <strong className="text-primary">
-                    "Business is not about money, it's about people"
-                  </strong>
-                  . Kami percaya bahwa setiap perjalanan adalah tentang
-                  menciptakan kenangan indah, membangun hubungan, dan memberikan
-                  pengalaman yang mengubah hidup.
-                </p>
-                <p>
-                  Selama lebih dari dua dekade, kami telah melayani ribuan
-                  pelanggan dengan mengedepankan program unggulan, tanggung
-                  jawab penuh, dan mutu terbaik. Dari wisata umum hingga ziarah
-                  religi, dari kunjungan industri hingga paket khusus, kami
-                  terus berinovasi untuk memberikan yang terbaik.
-                </p>
-                <p>
-                  Komitmen kami terhadap kerjasama dan pelayanan prima telah
-                  menjadikan Divana Tour sebagai partner terpercaya dalam setiap
-                  perjalanan wisata Anda.
-                </p>
+              <div>
+                <motion.h2
+                  className="font-sans font-bold text-3xl md:text-4xl text-foreground mb-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  🚀 Perjalanan Kami Dimulai
+                </motion.h2>
+
+                <div className="space-y-6 text-muted-foreground leading-relaxed">
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                  >
+                    <strong className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                      DIVANA TOUR
+                    </strong>{" "}
+                    didirikan pada tahun 1999 oleh{" "}
+                    <strong className="text-foreground">Drs. Slamet</strong>{" "}
+                    dengan visi sederhana namun mendalam: memberikan pelayanan
+                    perjalanan wisata yang tidak hanya memuaskan, tetapi juga
+                    berkesan dan bermakna bagi setiap pelanggan.
+                  </motion.p>
+
+                  <motion.div
+                    className="p-6 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl border-l-4 border-primary"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    <p className="text-primary font-semibold italic text-lg">
+                      "Business is not about money, it's about people"
+                    </p>
+                  </motion.div>
+
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                  >
+                    Selama lebih dari dua dekade, kami telah melayani ribuan
+                    pelanggan dengan mengedepankan program unggulan, tanggung
+                    jawab penuh, dan mutu terbaik. Dari wisata umum hingga
+                    ziarah religi, dari kunjungan industri hingga paket khusus.
+                  </motion.p>
+                </div>
               </div>
 
-              {/* Company Values */}
+              {/* Quick Stats */}
               <motion.div
-                className="grid grid-cols-2 gap-4 mt-8"
+                className="grid grid-cols-2 gap-6"
                 variants={staggerContainer}
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true }}
               >
-                {companyValues.map((value, index) => (
+                {[
+                  { number: "25+", label: "Tahun Pengalaman", icon: Clock },
+                  { number: "10K+", label: "Pelanggan Puas", icon: Users },
+                  { number: "50+", label: "Destinasi", icon: MapPin },
+                  { number: "99%", label: "Kepuasan", icon: Star },
+                ].map((stat, index) => (
                   <motion.div
                     key={index}
-                    className="text-center p-4"
-                    variants={fadeInUp}
+                    className="text-center p-4 bg-gradient-to-br from-card to-card/50 rounded-xl border border-border/50"
+                    variants={fadeInScale}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <value.icon className="w-8 h-8 text-primary mx-auto mb-2" />
-                    <h4 className="font-semibold text-foreground text-sm mb-1">
-                      {value.title}
+                    <stat.icon className="w-8 h-8 text-primary mx-auto mb-2" />
+                    <h4 className="font-bold text-2xl text-foreground mb-1">
+                      {stat.number}
                     </h4>
-                    <p className="text-xs text-muted-foreground">
-                      {value.description}
+                    <p className="text-sm text-muted-foreground">
+                      {stat.label}
                     </p>
                   </motion.div>
                 ))}
@@ -237,8 +539,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Professional Team */}
-      <section className="py-20 bg-card">
+      {/* Enhanced Professional Team */}
+      <section className="py-20 bg-gradient-to-br from-card via-card to-muted/30">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -247,12 +549,12 @@ export default function AboutPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-serif font-bold text-3xl md:text-4xl text-foreground mb-4">
-              Di Balik Layar DIVANA TOUR
+            <h2 className="font-sans font-bold text-3xl md:text-4xl text-foreground mb-4">
+              👥 Tim Profesional Kami
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Tim profesional yang berdedikasi untuk memberikan pengalaman
-              perjalanan terbaik
+              Orang-orang luar biasa di balik setiap perjalanan tak terlupakan
+              Anda
             </p>
           </motion.div>
 
@@ -387,14 +689,18 @@ export default function AboutPage() {
               Tim Lapangan
             </h3>
             <motion.div
-              className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6"
+              className="flex flex-wrap justify-center gap-6"
               variants={staggerContainer}
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
             >
               {teamStructure.fieldTeam.map((member, index) => (
-                <motion.div key={index} variants={fadeInUp}>
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] max-w-[321px]"
+                >
                   <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 py-0">
                     <div className="relative">
                       <img
@@ -419,8 +725,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Legal Information */}
-      <section className="py-16 bg-background">
+      {/* Enhanced Legal Information */}
+      <section className="py-16 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center max-w-4xl mx-auto"
@@ -429,23 +735,52 @@ export default function AboutPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="font-serif font-semibold text-2xl text-foreground mb-8">
-              Legalitas Perusahaan
+            <h3 className="font-sans font-bold text-2xl text-foreground mb-8">
+              📋 Legalitas Perusahaan
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <Card className="p-6">
-                <CardContent className="text-center">
-                  <h4 className="font-semibold text-foreground mb-2">SIUP</h4>
-                  <p className="text-muted-foreground">503/191/V/PK/2005</p>
-                </CardContent>
-              </Card>
-              <Card className="p-6">
-                <CardContent className="text-center">
-                  <h4 className="font-semibold text-foreground mb-2">NPWP</h4>
-                  <p className="text-muted-foreground">07.820.834.5-523.000</p>
-                </CardContent>
-              </Card>
-            </div>
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 gap-8"
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+            >
+              <motion.div variants={fadeInUp}>
+                <Card className="border-0 bg-gradient-to-br from-card to-card/50 p-6 hover:shadow-lg transition-all duration-300">
+                  <CardContent className="text-center">
+                    <motion.div
+                      className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <span className="text-2xl">📜</span>
+                    </motion.div>
+                    <h4 className="font-bold text-foreground mb-2">SIUP</h4>
+                    <p className="text-muted-foreground bg-muted/50 px-3 py-1 rounded font-extrabold">
+                      503/191/V/PK/2005
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div variants={fadeInUp}>
+                <Card className="border-0 bg-gradient-to-br from-card to-card/50 p-6 hover:shadow-lg transition-all duration-300">
+                  <CardContent className="text-center">
+                    <motion.div
+                      className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <span className="text-2xl">🏛️</span>
+                    </motion.div>
+                    <h4 className="font-bold text-foreground mb-2">NPWP</h4>
+                    <p className="text-muted-foreground bg-muted/50 px-3 py-1 rounded font-bold">
+                      07.820.834.5-523.000
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
           </motion.div>
         </div>
       </section>

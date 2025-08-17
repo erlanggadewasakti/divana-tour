@@ -4,75 +4,75 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color scheme to match Divana Tour red theme */
-  --background: oklch(1 0 0); /* White background */
-  --foreground: oklch(0.3 0 0); /* Dark gray text (#4b5563) */
-  --card: oklch(0.96 0 0); /* Light gray card background (#f5f5f5) */
-  --card-foreground: oklch(0.3 0 0); /* Dark gray card text */
-  --popover: oklch(1 0 0); /* White popover background */
-  --popover-foreground: oklch(0.3 0 0); /* Dark gray popover text */
-  --primary: oklch(0.5 0.2 25); /* Red primary color (#D32F2F) */
-  --primary-foreground: oklch(1 0 0); /* White text on primary */
-  --secondary: oklch(0.6 0.15 35); /* Deep orange accent (#ff5722) */
-  --secondary-foreground: oklch(1 0 0); /* White text on secondary */
-  --muted: oklch(0.96 0 0); /* Light gray muted background */
-  --muted-foreground: oklch(0.3 0 0); /* Dark gray muted text */
-  --accent: oklch(0.6 0.15 35); /* Deep orange accent */
-  --accent-foreground: oklch(1 0 0); /* White text on accent */
-  --destructive: oklch(0.5 0.2 25); /* Red destructive color */
-  --destructive-foreground: oklch(1 0 0); /* White text on destructive */
-  --border: oklch(0.9 0 0); /* Light border color (#e0e0e0) */
-  --input: oklch(1 0 0); /* White input background */
-  --ring: oklch(0.5 0.2 25 / 0.5); /* Red ring with opacity */
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.5rem; /* Slightly smaller radius for modern look */
-  --sidebar: oklch(1 0 0); /* White sidebar */
-  --sidebar-foreground: oklch(0.3 0 0); /* Dark gray sidebar text */
-  --sidebar-primary: oklch(0.5 0.2 25); /* Red sidebar primary */
-  --sidebar-primary-foreground: oklch(1 0 0); /* White sidebar primary text */
-  --sidebar-accent: oklch(0.6 0.15 35); /* Orange sidebar accent */
-  --sidebar-accent-foreground: oklch(1 0 0); /* White sidebar accent text */
-  --sidebar-border: oklch(0.9 0 0); /* Light sidebar border */
-  --sidebar-ring: oklch(0.5 0.2 25 / 0.5); /* Red sidebar ring */
+  /* Modern colorful theme for Divana Tour */
+  --background: oklch(0.99 0.005 120); /* Subtle cream background */
+  --foreground: oklch(0.15 0.02 240); /* Deep navy text */
+  --card: oklch(0.98 0.01 60); /* Warm white cards */
+  --card-foreground: oklch(0.15 0.02 240); /* Navy card text */
+  --popover: oklch(0.98 0.01 60); /* Warm white popover */
+  --popover-foreground: oklch(0.15 0.02 240); /* Navy popover text */
+  --primary: oklch(0.55 0.22 25); /* Vibrant red primary (#E53E3E) */
+  --primary-foreground: oklch(0.98 0.01 0); /* Pure white on primary */
+  --secondary: oklch(0.72 0.15 45); /* Warm orange (#FF9500) */
+  --secondary-foreground: oklch(0.98 0.01 0); /* White on secondary */
+  --muted: oklch(0.94 0.02 120); /* Soft mint background */
+  --muted-foreground: oklch(0.4 0.02 240); /* Muted navy text */
+  --accent: oklch(0.65 0.2 260); /* Vibrant blue accent (#3182CE) */
+  --accent-foreground: oklch(0.98 0.01 0); /* White on accent */
+  --destructive: oklch(0.5 0.22 15); /* Error red */
+  --destructive-foreground: oklch(0.98 0.01 0); /* White on destructive */
+  --border: oklch(0.88 0.02 120); /* Soft border */
+  --input: oklch(0.98 0.01 60); /* Warm white input */
+  --ring: oklch(0.55 0.22 25 / 0.3); /* Primary ring with opacity */
+  --chart-1: oklch(0.65 0.2 260); /* Blue chart color */
+  --chart-2: oklch(0.7 0.15 140); /* Green chart color */
+  --chart-3: oklch(0.72 0.15 45); /* Orange chart color */
+  --chart-4: oklch(0.68 0.18 320); /* Purple chart color */
+  --chart-5: oklch(0.75 0.12 80); /* Yellow chart color */
+  --radius: 0.75rem; /* Modern rounded corners */
+  --sidebar: oklch(0.98 0.01 60); /* Warm white sidebar */
+  --sidebar-foreground: oklch(0.15 0.02 240); /* Navy sidebar text */
+  --sidebar-primary: oklch(0.55 0.22 25); /* Red sidebar primary */
+  --sidebar-primary-foreground: oklch(0.98 0.01 0); /* White sidebar primary text */
+  --sidebar-accent: oklch(0.65 0.2 260); /* Blue sidebar accent */
+  --sidebar-accent-foreground: oklch(0.98 0.01 0); /* White sidebar accent text */
+  --sidebar-border: oklch(0.88 0.02 120); /* Soft sidebar border */
+  --sidebar-ring: oklch(0.55 0.22 25 / 0.3); /* Red sidebar ring */
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.5 0.2 25); /* Keep red primary in dark mode */
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.6 0.15 35); /* Keep orange secondary in dark mode */
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.6 0.15 35);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.5 0.2 25);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.5 0.2 25 / 0.5);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.5 0.2 25);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.6 0.15 35);
-  --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.5 0.2 25 / 0.5);
+  --background: oklch(0.08 0.02 240); /* Dark navy background */
+  --foreground: oklch(0.95 0.01 60); /* Warm white text */
+  --card: oklch(0.12 0.02 240); /* Dark navy cards */
+  --card-foreground: oklch(0.95 0.01 60); /* Warm white card text */
+  --popover: oklch(0.12 0.02 240); /* Dark navy popover */
+  --popover-foreground: oklch(0.95 0.01 60); /* Warm white popover text */
+  --primary: oklch(0.6 0.22 25); /* Brighter red in dark mode */
+  --primary-foreground: oklch(0.98 0.01 0); /* Pure white on primary */
+  --secondary: oklch(0.75 0.15 45); /* Brighter orange in dark mode */
+  --secondary-foreground: oklch(0.08 0.02 240); /* Dark text on secondary */
+  --muted: oklch(0.15 0.02 240); /* Dark muted background */
+  --muted-foreground: oklch(0.7 0.02 60); /* Light muted text */
+  --accent: oklch(0.7 0.2 260); /* Brighter blue accent in dark mode */
+  --accent-foreground: oklch(0.08 0.02 240); /* Dark text on accent */
+  --destructive: oklch(0.6 0.22 15); /* Brighter error red */
+  --destructive-foreground: oklch(0.98 0.01 0); /* White on destructive */
+  --border: oklch(0.2 0.02 240); /* Dark border */
+  --input: oklch(0.15 0.02 240); /* Dark input background */
+  --ring: oklch(0.6 0.22 25 / 0.3); /* Primary ring with opacity */
+  --chart-1: oklch(0.7 0.2 260); /* Brighter blue chart */
+  --chart-2: oklch(0.75 0.15 140); /* Brighter green chart */
+  --chart-3: oklch(0.77 0.15 45); /* Brighter orange chart */
+  --chart-4: oklch(0.73 0.18 320); /* Brighter purple chart */
+  --chart-5: oklch(0.8 0.12 80); /* Brighter yellow chart */
+  --sidebar: oklch(0.12 0.02 240); /* Dark navy sidebar */
+  --sidebar-foreground: oklch(0.95 0.01 60); /* Light sidebar text */
+  --sidebar-primary: oklch(0.6 0.22 25); /* Bright red sidebar primary */
+  --sidebar-primary-foreground: oklch(0.98 0.01 0); /* White sidebar primary text */
+  --sidebar-accent: oklch(0.7 0.2 260); /* Bright blue sidebar accent */
+  --sidebar-accent-foreground: oklch(0.08 0.02 240); /* Dark sidebar accent text */
+  --sidebar-border: oklch(0.2 0.02 240); /* Dark sidebar border */
+  --sidebar-ring: oklch(0.6 0.22 25 / 0.3); /* Red sidebar ring */
 }
 
 /* Updated theme configuration to properly use Poppins font */
