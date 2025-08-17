@@ -1,34 +1,36 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
-import Image from "next/image"
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { href: "/", label: "Beranda" },
     { href: "/tentang", label: "Tentang Kami" },
     { href: "/galeri", label: "Galeri" },
     { href: "/kontak", label: "Kontak" },
-  ]
+  ];
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-sm shadow-lg" : "bg-transparent"
+        isScrolled
+          ? "bg-background/95 backdrop-blur-sm shadow-lg"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -36,14 +38,20 @@ export default function Navbar() {
           <Link href="/" className="flex items-center space-x-3">
             <div className="w-12 h-12 relative">
               <Image
-                src="/divana-tour-logo.png"
+                src="/divana2.png"
                 alt="Divana Tour Logo"
                 width={48}
                 height={48}
-                className="object-contain"
+                className="object-contain rounded-2xl"
               />
             </div>
-            <span className="font-sans font-bold text-xl text-foreground">DIVANA TOUR</span>
+            <span
+              className={`font-sans font-bold text-xl text-foreground ${
+                isScrolled ? "text-foreground" : "text-white"
+              }`}
+            >
+              DIVANA TOUR
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -52,7 +60,9 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-sans font-medium"
+                className={`text-foreground font-sans font-medium ${
+                  isScrolled ? "text-foreground" : "text-white"
+                }`}
               >
                 {item.label}
               </Link>
@@ -61,13 +71,19 @@ export default function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button asChild className="bg-primary hover:bg-primary/90 font-sans">
+            <Button
+              asChild
+              className="bg-primary hover:bg-primary/90 font-sans"
+            >
               <Link href="/kontak">Hubungi Kami</Link>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden p-2" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <button
+            className="md:hidden p-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6 text-foreground" />
             ) : (
@@ -90,7 +106,10 @@ export default function Navbar() {
                   {item.label}
                 </Link>
               ))}
-              <Button asChild className="w-full bg-primary hover:bg-primary/90 font-sans">
+              <Button
+                asChild
+                className="w-full bg-primary hover:bg-primary/90 font-sans"
+              >
                 <Link href="/kontak" onClick={() => setIsMobileMenuOpen(false)}>
                   Hubungi Kami
                 </Link>
@@ -100,5 +119,5 @@ export default function Navbar() {
         )}
       </div>
     </nav>
-  )
+  );
 }
