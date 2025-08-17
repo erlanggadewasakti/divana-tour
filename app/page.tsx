@@ -102,7 +102,6 @@ export default function HomePage() {
         "Makan 3x Sehari",
         "Tour Guide",
       ],
-      color: "from-blue-500 to-blue-600",
       icon: Globe,
     },
     {
@@ -116,21 +115,19 @@ export default function HomePage() {
         "Fasilitas Ibadah",
         "Panduan Spiritual",
       ],
-      color: "from-emerald-500 to-emerald-600",
       icon: Heart,
     },
     {
       title: "Paket Kunjungan Industri",
       description:
         "Program edukatif untuk siswa SMK dengan kunjungan ke pabrik dan industri modern. Perluas wawasan dan pengalaman praktis yang akan mendukung masa depan karir siswa.",
-      image: "/placeholder-hlb4k.png",
+      image: "/industri.jpg",
       features: [
         "Kunjungan Pabrik",
         "Presentasi Ahli",
         "Sertifikat",
         "Dokumentasi",
       ],
-      color: "from-orange-500 to-orange-600",
       icon: Users,
     },
   ];
@@ -187,8 +184,8 @@ export default function HomePage() {
       rating: 5,
     },
     {
-      name: "Ibu Sari",
-      location: "Surabaya",
+      name: "SMP Negeri 1",
+      location: "Purworejo",
       text: "Tour ke Bali sangat memuaskan. Semua fasilitas sesuai janji dan pemandu sangat ramah dan profesional.",
       avatar: "/middle-aged-woman-smiling.png",
       rating: 5,
@@ -416,7 +413,7 @@ export default function HomePage() {
           >
             {services.map((service, index) => (
               <motion.div key={index} variants={fadeInUp}>
-                <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 group border-0 bg-gradient-to-br from-card to-card/50">
+                <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 group border-0 bg-gradient-to-br from-card to-card/50 py-0">
                   <div className="relative overflow-hidden">
                     <img
                       src={service.image}
