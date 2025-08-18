@@ -108,7 +108,7 @@ export default function HomePage() {
     {
       title: "Paket Wisata Umum",
       description:
-        "Jelajahi destinasi populer Indonesia dari Bromo hingga Bali dengan fasilitas terbaik dan pemandu berpengalaman. Nikmati perjalanan yang tak terlupakan",
+        "Jelajahi destinasi populer Indonesia dari Bromo hingga Bali dengan fasilitas terbaik dan pemandu berpengalaman. Nikmati perjalanan yang tak terlupakan bersama kami",
       image: "/mount-bromo-sunrise.png",
       features: [
         "Transportasi AC",
@@ -121,7 +121,7 @@ export default function HomePage() {
     {
       title: "Paket Wisata Religi",
       description:
-        "Ziarah spiritual ke Wali Songo & Para Ulama dengan program yang khusyuk dan berkesan. Dapatkan pencerahan rohani dan kedamaian batin dalam setiap langkah perjalanan suci Anda.",
+        "Ziarah spiritual ke Wali Songo & Para Ulama dengan program yang khusyuk dan berkesan. Dapatkan pencerahan rohani dalam setiap langkah perjalanan suci Anda.",
       image: "/indonesian-mosque-traditional.png",
       features: [
         "Ziarah Wali / Ulama",
