@@ -10,6 +10,7 @@ import {
   Globe,
   Heart,
   MapPin,
+  Rocket,
   Shield,
   Star,
   Target,
@@ -166,7 +167,7 @@ export default function AboutPage() {
         department: "Keuangan",
       },
       {
-        name: "Yusli Wibowo",
+        name: "Yusli Indrabowo",
         position: "Manajer Marketing",
         image: "/about-us/yusli square.jpg",
         department: "Marketing",
@@ -359,6 +360,113 @@ export default function AboutPage() {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Visi & Misi Section */}
+      <section className="py-20 bg-gradient-to-br from-background to-muted/20">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="font-sans font-bold text-3xl md:text-4xl text-foreground mb-4">
+              🎯 Visi & Misi Kami
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Komitmen kami dalam memberikan pelayanan wisata terbaik
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Visi */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <Card className="h-full border-0 bg-gradient-to-br from-primary/10 to-primary/5 hover:shadow-xl transition-all duration-500">
+                <CardContent className="p-8">
+                  <motion.div
+                    className="w-20 h-20 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-6"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Target className="w-10 h-10 text-primary" />
+                  </motion.div>
+                  <h3 className="font-sans font-bold text-2xl text-foreground text-center mb-6">
+                    VISI
+                  </h3>
+                  <div className="space-y-4 text-muted-foreground leading-relaxed">
+                    <p className="text-center text-lg font-medium text-primary">
+                      "Menjadi perusahaan penyedia jasa perjalanan wisata
+                      terpercaya yang memberikan pengalaman tak terlupakan"
+                    </p>
+                    <p className="text-center">
+                      Kami berkomitmen untuk menjadi yang terdepan dalam
+                      industri pariwisata dengan mengutamakan kepuasan
+                      pelanggan, inovasi layanan, dan pengalaman wisata yang
+                      berkesan untuk setiap perjalanan.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Misi */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <Card className="h-full border-0 bg-gradient-to-br from-secondary/10 to-secondary/5 hover:shadow-xl transition-all duration-500">
+                <CardContent className="p-8">
+                  <motion.div
+                    className="w-20 h-20 bg-secondary/20 rounded-2xl flex items-center justify-center mx-auto mb-6"
+                    whileHover={{ scale: 1.1, rotate: -5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Rocket className="w-10 h-10 text-secondary" />
+                  </motion.div>
+                  <h3 className="font-sans font-bold text-2xl text-foreground text-center mb-6">
+                    MISI
+                  </h3>
+                  <div className="space-y-4">
+                    {[
+                      "Memberikan pelayanan wisata dengan standar kualitas tinggi dan profesional",
+                      "Menyediakan paket wisata yang beragam sesuai kebutuhan dan budget pelanggan",
+                      "Membangun kepercayaan melalui transparansi, kejujuran, dan komitmen",
+                      "Mengutamakan keselamatan dan kenyamanan dalam setiap perjalanan",
+                      "Terus berinovasi dalam pelayanan dan teknologi untuk kepuasan pelanggan",
+                    ].map((item, index) => (
+                      <motion.div
+                        key={index}
+                        className="flex items-start space-x-3"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                      >
+                        <div className="w-6 h-6 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-white text-sm font-bold">
+                            {index + 1}
+                          </span>
+                        </div>
+                        <p className="text-muted-foreground leading-relaxed text-sm">
+                          {item}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -729,7 +837,7 @@ export default function AboutPage() {
       <section className="py-16 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4">
           <motion.div
-            className="text-center max-w-4xl mx-auto"
+            className="text-center  mx-auto"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -739,7 +847,7 @@ export default function AboutPage() {
               📋 Legalitas Perusahaan
             </h3>
             <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-8"
+              className="grid grid-cols-1 md:grid-cols-3 gap-8"
               variants={staggerContainer}
               initial="initial"
               whileInView="animate"
@@ -780,7 +888,183 @@ export default function AboutPage() {
                   </CardContent>
                 </Card>
               </motion.div>
+              <motion.div variants={fadeInUp}>
+                <Card className="border-0 bg-gradient-to-br from-card to-card/50 p-6 hover:shadow-lg transition-all duration-300">
+                  <CardContent className="text-center">
+                    <motion.div
+                      className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <span className="text-2xl">📃</span>
+                    </motion.div>
+                    <h4 className="font-bold text-foreground mb-2">NIB</h4>
+                    <p className="text-muted-foreground bg-muted/50 px-3 py-1 rounded font-bold">
+                      1907250044755
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Perwakilan Pangkalan Bun Section */}
+      <section className="py-20 bg-gradient-to-br from-accent/5 to-background">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="font-sans font-bold text-3xl md:text-4xl text-foreground mb-4">
+              🏢 Perwakilan Kami
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Melayani Anda di berbagai wilayah dengan komitmen pelayanan
+              terbaik
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <Card className="border-0 bg-gradient-to-br from-card via-card/80 to-accent/10 hover:shadow-2xl transition-all duration-500 overflow-hidden">
+              <CardContent className="p-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                  {/* Representative Info */}
+                  <motion.div
+                    className="space-y-6"
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    <div className="text-center lg:text-left">
+                      <motion.div
+                        className="w-20 h-20 bg-accent/20 rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-4"
+                        whileHover={{ scale: 1.1, rotate: 10 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <span className="text-3xl">📍</span>
+                      </motion.div>
+                      <h3 className="font-sans font-bold text-2xl text-foreground mb-2">
+                        Pangkalan Bun
+                      </h3>
+                      <p className="text-muted-foreground mb-4">
+                        Perwakilan Resmi Divana Tour
+                      </p>
+                    </div>
+
+                    {/* Representative Details */}
+                    <div className="space-y-4">
+                      <motion.div
+                        className="flex items-start space-x-4 p-4 bg-gradient-to-r from-primary/10 to-transparent rounded-lg"
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Users className="w-5 h-5 text-primary" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-foreground mb-1">
+                            Perwakilan
+                          </h4>
+                          <p className="text-muted-foreground text-lg font-medium">
+                            Yusli Indrabowo
+                          </p>
+                        </div>
+                      </motion.div>
+
+                      <motion.div
+                        className="flex items-start space-x-4 p-4 bg-gradient-to-r from-secondary/10 to-transparent rounded-lg"
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div className="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                          <MapPin className="w-5 h-5 text-secondary" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-foreground mb-1">
+                            Alamat
+                          </h4>
+                          <p className="text-muted-foreground leading-relaxed">
+                            Jl. Mustalim, RT. 16
+                            <br />
+                            Kel. Madurejo, Pangkalan Bun
+                            <br />
+                            Kotawaringin Barat, Kalimantan Tengah
+                          </p>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+
+                  {/* Illustration/Visual */}
+                  <motion.div
+                    className="relative"
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                  >
+                    <div className="relative bg-gradient-to-br from-accent/20 to-primary/10 rounded-3xl p-8 h-80 flex items-center justify-center">
+                      {/* Decorative elements */}
+                      <div className="absolute top-4 left-4 w-4 h-4 bg-accent rounded-full opacity-60" />
+                      <div className="absolute top-8 right-6 w-3 h-3 bg-primary rounded-full opacity-40" />
+                      <div className="absolute bottom-6 left-8 w-2 h-2 bg-secondary rounded-full opacity-50" />
+                      <div className="absolute bottom-4 right-4 w-5 h-5 bg-accent/60 rounded-full opacity-30" />
+
+                      {/* Central illustration */}
+                      <motion.div
+                        className="text-center"
+                        animate={{ y: [0, -10, 0] }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                      >
+                        <div className="text-6xl mb-4">🏢</div>
+                        <div className="text-4xl mb-2">🌴</div>
+                        <div className="text-2xl">✈️</div>
+                      </motion.div>
+                    </div>
+
+                    {/* Contact Information */}
+                    <motion.div
+                      className="mt-6 p-6 bg-gradient-to-r from-card to-muted/30 rounded-2xl border border-border/50"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <h4 className="font-semibold text-foreground mb-3 text-center">
+                        Siap Melayani Anda
+                      </h4>
+                      <div className="text-center space-y-2">
+                        <p className="text-muted-foreground text-sm">
+                          Konsultasi dan informasi paket wisata
+                        </p>
+                        <div className="flex justify-center space-x-4 text-xs">
+                          <span className="px-3 py-1 bg-blue-700/20 text-blue-700 rounded-full">
+                            Wisata Umum
+                          </span>
+                          <span className="px-3 py-1 bg-emerald-700/20 text-emerald-700 rounded-full">
+                            Wisata Religi
+                          </span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </CardContent>
+            </Card>
           </motion.div>
         </div>
       </section>
