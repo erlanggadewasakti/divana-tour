@@ -170,24 +170,51 @@ export default function HomePage() {
 
   const testimonials = [
     {
-      name: "Keluarga Budi",
-      location: "Jakarta",
-      text: "Pelayanannya luar biasa! Perjalanan Ziarah Wali Songo bersama Divana Tour sangat berkesan dan khusyuk.",
-      avatar: "/happy-family-portrait.png",
-      rating: 5,
-    },
-    {
-      name: "SMK Negeri 1 Yogyakarta",
-      location: "Yogyakarta",
-      text: "Kunjungan industri yang sangat edukatif. Siswa-siswa mendapat pengalaman berharga dan wawasan baru.",
-      avatar: "/diverse-school-group.png",
-      rating: 5,
-    },
-    {
-      name: "SMP Negeri 1",
+      name: "SMP Negeri 1 Purworejo",
       location: "Purworejo",
-      text: "Tour ke Bali sangat memuaskan. Semua fasilitas sesuai janji dan pemandu sangat ramah dan profesional.",
-      avatar: "/middle-aged-woman-smiling.png",
+      text: "Outing Class 2025 bersama Divana Tour sangat berkesan! Anak-anak senang sekali dan mendapat pengalaman yang tak terlupakan. Pelayanan sangat profesional dan fasilitas sesuai harapan.",
+      avatar:
+        "https://upload.wikimedia.org/wikipedia/commons/d/dc/SMPN_1_Purworejo.jpg",
+      rating: 5,
+    },
+    {
+      name: "SMK YPP Purworejo",
+      location: "Purworejo",
+      text: "Kunjungan industri 2024 yang sangat edukatif dan terorganisir dengan baik. Siswa mendapat wawasan praktis yang berharga untuk masa depan mereka. Terima kasih Divana Tour!",
+      avatar:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIN6UY33r8jtMm7TZ2jFoPqbhXxgSyeYo0GQ&s",
+      rating: 5,
+    },
+    {
+      name: "SD Kristen Penabur Wacana",
+      location: "Purworejo",
+      text: "Edu Trip Jogja 2025 luar biasa! Anak-anak excited banget dan belajar banyak hal baru. Guide-nya ramah dan sabar menghadapi anak-anak. Pasti akan kerjasama lagi tahun depan.",
+      avatar:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYk4Ay5COBrLKiVR9HCLBwUKnQyy0jDKCLPw&s",
+      rating: 5,
+    },
+    {
+      name: "SMPN 9 Purworejo",
+      location: "Purworejo",
+      text: "Outing Class 2025 sangat menyenangkan! Semua siswa antusias dan mendapat pengalaman berharga. Transportasi nyaman, makan enak, dan destinasi wisata sangat menarik.",
+      avatar:
+        "https://play-lh.googleusercontent.com/vBG_Rhw-OXwVNe0NcagSbde5cnpvYJMyYWjlp71IfTNguXQb9F6WhJoCm0pxiaiNocY",
+      rating: 5,
+    },
+    {
+      name: "SMK TKM Taman Siswa",
+      location: "Purworejo",
+      text: "Family Gathering 2025 sukses besar! Acara berjalan lancar dari awal sampai akhir. Tim Divana Tour sangat responsif dan detail dalam pelayanan. Highly recommended!",
+      avatar:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Logo_SMK_TKM.jpg/250px-Logo_SMK_TKM.jpg",
+      rating: 5,
+    },
+    {
+      name: "SDIT Salsabila 5",
+      location: "Purworejo",
+      text: "Outing Class 2025 yang sangat berkesan untuk anak-anak. Mereka pulang dengan wajah bahagia dan cerita seru. Terima kasih sudah memberikan pengalaman terbaik!",
+      avatar:
+        "https://ppdb.salsabilapurworejo.sch.id/wp-content/uploads/2024/11/Logo-Salsabila-300x300.png",
       rating: 5,
     },
   ];
@@ -243,11 +270,24 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.6, -0.05, 0.01, 0.99] }}
         >
-          <motion.div className="inline-block mb-6" animate={floatingAnimation}>
-            <div className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-              <span className="text-sm font-medium">
-                ✨ Terpercaya Sejak 1999
-              </span>
+          <motion.div
+            className="inline-block mb-8"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+          >
+            <div className="flex flex-col items-center space-y-4">
+              <motion.img
+                src="/divana1.png"
+                alt="Divana Tour Logo"
+                className="w-24 h-24 md:w-48 md:h-48 rounded-full shadow-2xl border-4 border-white/20 bg-white/10 backdrop-blur-sm"
+                animate={floatingAnimation}
+              />
+              <div className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                <span className="text-sm font-medium">
+                  ✨ Terpercaya Sejak 1999
+                </span>
+              </div>
             </div>
           </motion.div>
 
@@ -283,27 +323,6 @@ export default function HomePage() {
             Pengalaman wisata terbaik sejak 1999. Kami hadir untuk menyukseskan
             setiap momen perjalanan Anda dengan pelayanan yang tak terlupakan.
           </motion.p>
-
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 1,
-              delay: 0.6,
-              ease: [0.6, -0.05, 0.01, 0.99],
-            }}
-          >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-primary px-8 py-6 text-lg font-semibold rounded-xl"
-              >
-                📞 Hubungi Kami
-              </Button>
-            </motion.div>
-          </motion.div>
         </motion.div>
 
         {/* Floating Elements */}
@@ -419,9 +438,6 @@ export default function HomePage() {
                       src={service.image}
                       alt={service.title}
                       className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-0 group-hover:opacity-90 transition-opacity duration-500`}
                     />
                     <div className="absolute top-4 right-4">
                       <motion.div

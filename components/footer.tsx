@@ -193,13 +193,26 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <p className="text-muted-foreground text-sm font-sans">
-            © 2025{" "}
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-semibold">
-              DIVANA TOUR
-            </span>
-            . All rights reserved. Made with ❤️ for amazing journeys.
-          </p>
+          <div className="text-muted-foreground text-sm font-sans space-y-2">
+            <p>
+              © 2025{" "}
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-semibold">
+                DIVANA TOUR
+              </span>
+              . All rights reserved. Made with ❤️ for amazing journeys.
+            </p>
+            <p>
+              Developed by{" "}
+              <a
+                href="https://www.instagram.com/erlanggadewasakti/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:text-secondary transition-colors duration-200 font-semibold"
+              >
+                Erlangga Dewa Sakti
+              </a>
+            </p>
+          </div>
         </motion.div>
       </div>
     </motion.footer>
