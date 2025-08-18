@@ -17,6 +17,7 @@ import {
   Star,
   Users,
 } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 
 // Enhanced animation variants
@@ -80,6 +81,19 @@ const ParallaxHero = ({ children }: { children: React.ReactNode }) => {
 
 export default function HomePage() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [mounted, setMounted] = useState(false);
+  const { theme } = useTheme();
+
+  // Handle mounting for theme
+  useEffect(() => {
+    setMounted(true);
+
+    // Preload both background images for smooth transition
+    const lightImg = new Image();
+    const darkImg = new Image();
+    lightImg.src = "/home-light2.jpg";
+    darkImg.src = "/home-dark2.jpg";
+  }, []);
 
   // Auto-rotate testimonials
   useEffect(() => {
@@ -254,14 +268,16 @@ export default function HomePage() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <ParallaxHero>
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110 transition-all duration-500"
             style={{
               backgroundImage:
-                "url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80)",
+                mounted && theme === "dark"
+                  ? "url(/home-dark2.jpg)"
+                  : "url(/home-light2.jpg)",
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-secondary/20" />
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/20" />
+          <div className="absolute inset-0 bg-black/60" />
         </ParallaxHero>
 
         <motion.div
@@ -271,7 +287,7 @@ export default function HomePage() {
           transition={{ duration: 1, ease: [0.6, -0.05, 0.01, 0.99] }}
         >
           <motion.div
-            className="inline-block mb-8"
+            className="inline-block mt-8 mb-4"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
@@ -311,7 +327,7 @@ export default function HomePage() {
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl mb-10 leading-relaxed max-w-3xl mx-auto text-white/90"
+            className="text-lg md:text-xl  leading-relaxed max-w-3xl mx-auto text-white/90"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
