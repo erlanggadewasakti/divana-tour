@@ -351,7 +351,7 @@ export default function ContactPage() {
               className="order-2 xl:order-1"
             >
               <div className="bg-gradient-to-br from-card to-card/50 rounded-3xl p-8 shadow-xl border border-border/50 backdrop-blur-sm">
-                <h2 className="font-sans font-bold text-3xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-8">
+                <h2 className="font-sans font-bold text-3xl mb-8">
                   📞 Informasi Kontak
                 </h2>
 
@@ -500,7 +500,7 @@ export default function ContactPage() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
                     >
-                      <h3 className="font-sans font-bold text-3xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
+                      <h3 className="font-sans font-bold text-3xl  mb-2">
                         💌 Kirim Pesan
                       </h3>
                       <p className="text-muted-foreground mb-8">
@@ -699,7 +699,7 @@ export default function ContactPage() {
                             whileTap={{ scale: 0.95 }}
                           >
                             <Send className="w-5 h-5" />
-                            🚀 Kirim Pesan
+                            Kirim Pesan
                           </motion.div>
                         )}
                       </Button>
